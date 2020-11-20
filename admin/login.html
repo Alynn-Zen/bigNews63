@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-19 15:41:51
- * @LastEditTime: 2020-11-20 21:29:17
+ * @LastEditTime: 2020-11-20 23:16:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \前端\10_大事件\练习\bigNews63\admin\login.html
@@ -22,6 +22,8 @@
     <script src="./libs/jquery-1.12.4.min.js"></script>
     <!-- 引入bootstrap的js文件 -->
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 导入http.js文件 -->
+    <script src="./libs/http.js"></script>
   </head>
 
   <body>
@@ -96,7 +98,7 @@
           // 1.5 发送Ajax请求,完成登录
           $.ajax({
             type: "post",
-            url: "http://localhost:8080/api/v1/admin/user/login",
+            url: BigNew.user_login,
             data: {
               username: userName,
               password: userPassWord,
