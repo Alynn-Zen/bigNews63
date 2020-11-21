@@ -120,7 +120,7 @@
           // data: "data",
           dataType: "json",
           success: function (backData) {
-            console.log(backData);
+            // console.log(backData);
             // 1.2 将返回值赋值给页面
             // $(".username").val(backData.data.username);
             // $(".nickname").val(backData.data.nickname);
@@ -158,7 +158,7 @@
             contentType: false,
             processData: false,
             success: function (backData) {
-              console.log(backData);
+              //   console.log(backData);
               if (backData.code == 200) {
                 alert(backData.msg);
                 //   方案一:更新index页面,用户体验差!
