@@ -105,9 +105,11 @@
           dataType: "json",
           success: function (backData) {
             // 1.3 个人信息显示在页面上
-            $(".user_info i").text(backData.data.nickname);
-            $(".user_info img").attr("src", backData.data.userPic);
-            $(".user_center_link>img").attr("src", backData.data.userPic);
+            if (backData.code == 200) {
+              $(".user_info i").text(backData.data.nickname);
+              $(".user_info img").attr("src", backData.data.userPic);
+              $(".user_center_link>img").attr("src", backData.data.userPic);
+            }
           },
         });
 
