@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-19 15:41:51
+ * @LastEditTime: 2020-11-23 09:09:23
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \前端\10_大事件\练习\bigNews63\admin\article_category.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +22,8 @@
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
     <!-- 引入模板引擎js文件 -->
     <script src="./libs/template-web.js"></script>
+    <!-- 引入接口地址 -->
+    <script src="./libs/http.js"></script>
 </head>
 
 <body>
@@ -51,5 +61,40 @@
             </table>
         </div>
     </div>
+    <script id="category_temp" type="text/html">
+        {{each data v}}
+        <tr>
+            <td>{{v.name}}</td>
+            <td>{{v.slug}}</td>
+            <td class="text-center">
+                <a href="javascript:void(0)" data-toggle="modal" class=" btn btn-info btn-xs">编辑</a>
+                <a href="javascript:void(0)" data-id='{{v.id}}' class="btn btn-danger btn-xs">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <script>
+        $(function () {
+            // 一: 一进来就显示所有的文章类别
+            // 1.1 发送Ajax请求
+            $.ajax({
+                type: "get",
+                url: BigNew.category_list,
+                // data: "data",
+                dataType: "json",
+                success: function (backData) {
+                    // console.log(backData);
+                    // 1.2 通过模板引擎把内容渲染上去
+                    if (backData.code==200) {
+                        let str=template('category_temp',backData)
+                        // $('tbody').append(str);
+                        $('tbody').html(str);
+                    }
+                }
+            });
 
+            // 二
+            // 三
+        })
+    </script>
 </html>
