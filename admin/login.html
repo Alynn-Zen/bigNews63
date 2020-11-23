@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-19 15:41:51
- * @LastEditTime: 2020-11-21 21:23:44
+ * @LastEditTime: 2020-11-23 09:47:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \前端\10_大事件\练习\bigNews63\admin\login.html
@@ -112,7 +112,6 @@
               $("#myModal").on("hidden.bs.modal", function (e) {
                 if (backData.code == 200) {
                   // alert("登录成功");
-                  // do something...
                   // 保存服务器返回的token令牌
                   window.localStorage.setItem("token", backData.token);
                   window.location.href = "./index.html";
