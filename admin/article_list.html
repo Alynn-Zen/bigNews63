@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-19 15:41:51
- * @LastEditTime: 2020-11-24 11:14:36
+ * @LastEditTime: 2020-11-24 11:27:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \前端\10_大事件\练习\bigNews63\admin\article_list.html
@@ -248,7 +248,10 @@
             });
           }
         });
-        // 五
+        // 五: 点击发表文章,触发左侧导航栏第二个li的点击事件
+        $("#release_btn").on("click", function () {
+          parent.$(".level02>li:eq(1)>a").click();
+        });
       });
     </script>
   </body>
