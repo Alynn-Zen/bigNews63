@@ -227,6 +227,65 @@
     </div>
     <!-- 导包template -->
     <script src="./js/template-web.js"></script>
+    <!-- 导入http.js文件 -->
+    <script src="./js/http.js"></script>
+
+    <!-- 一: 数据模板 -->
+    <script id="list_temp" type="text/html">
+        {{each data.data v}}
+        <div class="common_news_list">
+            <a href="./article.html?id={{v.id}}" class="list_pic"><img src="{{v.cover}}" alt="" /></a>
+            <h4>
+                <a href="./article.html?id={{v.id}}">{{v.title}}</a>
+            </h4>
+            <p>{{@ v.intro}}</p>
+            <div class="new_info">
+                <span>标签：{{v.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读(
+                    {{v.read}} )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{v.comments}} )</span>
+                <b>发布于 {{v.date}}</b>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    <script>
+        // 入口函数
+        $(function () {
+            // 一: 判断是怎么进入到list页面
+            let value = window.location.search
+            let value1 = value.split('=')[0]
+            let value2 = value.split('=')[1]
+            // console.log(value, value1, value2);
+            // 如果是直接输入网址进来就直接打回到index页面
+            if (value == '') {
+                window.location.href = './index.html'
+            } else if (value1 == '?id') {
+                // 点击导航进来
+                $.ajax({
+                    type: "get",
+                    url: BigNew.index_search,
+                    data: {
+                        type: value2
+                    },
+                    dataType: "json",
+                    success: function (backData) {
+                        // console.log(backData);
+                        if (backData.code == 200) {
+                            if (backData.data.data.length > 0) {
+                                let res = template('list_temp', backData)
+                                $('div.setfr').html('<div class="list_title"><h3>' + backData.data
+                                    .data[0].category + '</h3></div>' + res);
+                            } else {
+                                $('div.setfr').html('<div class="list_title"><h3>没有数据</h3></div>');
+                            }
+                        }
+                    }
+                });
+            } else {
+                // 搜索进来
+            }
+        })
+    </script>
 </body>
 
 </html>
