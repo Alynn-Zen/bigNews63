@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-19 15:41:51
- * @LastEditTime: 2020-11-23 14:52:58
+ * @LastEditTime: 2020-11-24 20:25:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \前端\10_大事件\练习\bigNews63\admin\article_category.html
@@ -93,28 +93,17 @@
     </div>
     <!-- 模板引擎 -->
     <script id="category_temp" type="text/html">
-      {{each data v}}
-      <tr>
-        <td>{{v.name}}</td>
-        <td>{{v.slug}}</td>
-        <td class="text-center">
-          <a
-            href="javascript:void(0)"
-            data-toggle="modal"
-            data-target="#myModal"
-            data-id="{{v.id}}"
-            class=" btn btn-info btn-xs"
-            >编辑</a
-          >
-          <a
-            href="javascript:void(0)"
-            data-id="{{v.id}}"
-            class="btn btn-danger btn-xs btn-delete"
-            >删除</a
-          >
-        </td>
-      </tr>
-      {{/each}}
+        {{each data v}}
+        <tr>
+            <td>{{v.name}}</td>
+            <td>{{v.slug}}</td>
+            <td class="text-center">
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" data-id="{{v.id}}"
+                    class=" btn btn-info btn-xs">编辑</a>
+                <a href="javascript:void(0)" data-id="{{v.id}}" class="btn btn-danger btn-xs btn-delete">删除</a>
+            </td>
+        </tr>
+        {{/each}}
     </script>
     <script>
         $(function () {

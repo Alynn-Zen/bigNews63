@@ -1,192 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>文章列表</title>
-    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/iconfont.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="./libs/jquery-1.12.4.min.js"></script>
-    <script src="./libs/http.js"></script>
-  </head>
 
-  <body>
-    <div class="container-fluid">
-      <div class="common_title">用户信息修改</div>
-      <div class="container-fluid common_con">
-        <form class="form-horizontal article_form" id="form">
-          <div class="form-group">
-            <label for="inputEmail1" class="col-sm-2 control-label"
-              >用户名称：</label
-            >
-            <div class="col-sm-4">
-              <input
-                type="text"
-                name="username"
-                class="form-control username"
-                id="inputEmail1"
-                value="李思思"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail2" class="col-sm-2 control-label"
-              >昵称：</label
-            >
-            <div class="col-sm-4">
-              <input
-                type="text"
-                name="nickname"
-                class="form-control nickname"
-                id="inputEmail2"
-                value="哈哈思"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label"
-              >邮箱：</label
-            >
-            <div class="col-sm-4">
-              <input
-                type="text"
-                name="email"
-                class="form-control email"
-                id="inputEmail3"
-                value="520@163.com"
-              />
-            </div>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>文章列表</title>
+  <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/iconfont.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="./libs/jquery-1.12.4.min.js"></script>
+  <script src="./libs/http.js"></script>
+</head>
 
-          <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label"
-              >用户图标：</label
-            >
-            <div class="col-sm-10">
-              <img src="images/2.jpg" alt="" class="user_pic" />
-              <input
-                style="display: none"
-                name="userPic"
-                type="file"
-                id="exampleInputFile"
-              />
-              <!-- 给label标签的for属性赋值,值是input标签的id,那这样的话点击label就相当于点击了input -->
-              <br />
-              <label for="exampleInputFile">
-                <img
-                  src="./images/uploads_icon.jpg"
-                  style="height: 50px"
-                  alt=""
-                />
-              </label>
-            </div>
+<body>
+  <div class="container-fluid">
+    <div class="common_title">用户信息修改</div>
+    <div class="container-fluid common_con">
+      <form class="form-horizontal article_form" id="form">
+        <div class="form-group">
+          <label for="inputEmail1" class="col-sm-2 control-label">用户名称：</label>
+          <div class="col-sm-4">
+            <input type="text" name="username" class="form-control username" id="inputEmail1" value="李思思" />
           </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail2" class="col-sm-2 control-label">昵称：</label>
+          <div class="col-sm-4">
+            <input type="text" name="nickname" class="form-control nickname" id="inputEmail2" value="哈哈思" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">邮箱：</label>
+          <div class="col-sm-4">
+            <input type="text" name="email" class="form-control email" id="inputEmail3" value="520@163.com" />
+          </div>
+        </div>
 
-          <div class="form-group">
-            <label for="inputEmail4" class="col-sm-2 control-label"
-              >密码：</label
-            >
-            <div class="col-sm-4">
-              <input
-                type="password"
-                name="password"
-                class="form-control password"
-                id="inputEmail4"
-                value="12345678"
-              />
-            </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">用户图标：</label>
+          <div class="col-sm-10">
+            <img src="images/2.jpg" alt="" class="user_pic" />
+            <input style="display: none" name="userPic" type="file" id="exampleInputFile" />
+            <!-- 给label标签的for属性赋值,值是input标签的id,那这样的话点击label就相当于点击了input -->
+            <br />
+            <label for="exampleInputFile">
+              <img src="./images/uploads_icon.jpg" style="height: 50px" alt="" />
+            </label>
           </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-success btn-edit">
-                修改
-              </button>
-            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail4" class="col-sm-2 control-label">密码：</label>
+          <div class="col-sm-4">
+            <input type="password" name="password" class="form-control password" id="inputEmail4" value="12345678" />
           </div>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success btn-edit">
+              修改
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <script>
-      $(function () {
-        // 一: 进入页面就获取个人用户信息
-        // 1.1 发送Ajax请求
+  <script>
+    $(function () {
+      // 一: 进入页面就获取个人用户信息
+      // 1.1 发送Ajax请求
+      $.ajax({
+        type: "get",
+        url: BigNew.user_detail,
+        // data: "data",
+        dataType: "json",
+        success: function (backData) {
+          // console.log(backData);
+          // 1.2 将返回值赋值给页面
+          // $(".username").val(backData.data.username);
+          // $(".nickname").val(backData.data.nickname);
+          // $(".email").val(backData.data.email);
+          // $(".password").val(backData.data.password);
+          for (let key in backData.data) {
+            $("." + key).val(backData.data[key]);
+          }
+          $(".user_pic").attr("src", backData.data.userPic);
+        },
+      });
+
+      // 二: 图片预览
+      $("#exampleInputFile").on("change", function () {
+        let file1 = this.files[0];
+        let url = URL.createObjectURL(file1);
+        $(".user_pic").attr("src", url);
+      });
+
+      // 三: 设置修改按钮点击事件,获取form对象,更新index页面
+      // 1.5 更新index页面
+      // 1.1 设置点击事件
+      $(".btn-edit").on("click", function (e) {
+        // 1.2 阻止submit提交
+        e.preventDefault();
+        // 1.3 创建formData对象
+        let fd = new FormData($("form")[0]);
+        //   console.log(fd);
+        // 1.4 发送Ajax请求
         $.ajax({
-          type: "get",
-          url: BigNew.user_detail,
-          // data: "data",
+          type: "post",
+          url: BigNew.user_edit,
+          data: fd,
           dataType: "json",
+          contentType: false,
+          processData: false,
           success: function (backData) {
-            // console.log(backData);
-            // 1.2 将返回值赋值给页面
-            // $(".username").val(backData.data.username);
-            // $(".nickname").val(backData.data.nickname);
-            // $(".email").val(backData.data.email);
-            // $(".password").val(backData.data.password);
-            for (let key in backData.data) {
-              $("." + key).val(backData.data[key]);
+            //   console.log(backData);
+            if (backData.code == 200) {
+              alert(backData.msg);
+              //   方案一:更新index页面,用户体验差!
+              // parent.window.location.reload();
+              // 方案二: 发送Ajax请求更新index页面     推荐
+              $.ajax({
+                url: window.BigNew.user_info,
+                success: function (backData) {
+                  //console.log(backData);
+                  if (backData.code == 200) {
+                    //给父页面的显示个人信息的标签设置新的值.
+                    parent
+                      .$(".user_info>span>i")
+                      .text(backData.data.nickname);
+                    parent
+                      .$(".user_info>img")
+                      .attr("src", backData.data.userPic);
+                    parent
+                      .$(".user_center_link>img")
+                      .attr("src", backData.data.userPic);
+                  }
+                },
+              });
             }
-            $(".user_pic").attr("src", backData.data.userPic);
           },
         });
-
-        // 二: 图片预览
-        $("#exampleInputFile").on("change", function () {
-          let file1 = this.files[0];
-          let url = URL.createObjectURL(file1);
-          $(".user_pic").attr("src", url);
-        });
-
-        // 三: 设置修改按钮点击事件,获取form对象,更新index页面
-        // 1.5 更新index页面
-        // 1.1 设置点击事件
-        $(".btn-edit").on("click", function (e) {
-          // 1.2 阻止submit提交
-          e.preventDefault();
-          // 1.3 创建formData对象
-          let fd = new FormData($("form")[0]);
-          //   console.log(fd);
-          // 1.4 发送Ajax请求
-          $.ajax({
-            type: "post",
-            url: BigNew.user_edit,
-            data: fd,
-            dataType: "json",
-            contentType: false,
-            processData: false,
-            success: function (backData) {
-              //   console.log(backData);
-              if (backData.code == 200) {
-                alert(backData.msg);
-                //   方案一:更新index页面,用户体验差!
-                // parent.window.location.reload();
-                // 方案二: 发送Ajax请求更新index页面     推荐
-                $.ajax({
-                  url: window.BigNew.user_info,
-                  success: function (backData) {
-                    //console.log(backData);
-                    if (backData.code == 200) {
-                      //给父页面的显示个人信息的标签设置新的值.
-                      parent
-                        .$(".user_info>span>i")
-                        .text(backData.data.nickname);
-                      parent
-                        .$(".user_info>img")
-                        .attr("src", backData.data.userPic);
-                      parent
-                        .$(".user_center_link>img")
-                        .attr("src", backData.data.userPic);
-                    }
-                  },
-                });
-              }
-            },
-          });
-        });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
