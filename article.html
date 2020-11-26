@@ -208,7 +208,134 @@
     <!-- 引入模板引擎js文件 -->
     <script src="./js/template-web.js"></script>
     <script src="./js/jquery-1.12.4.min.js"></script>
+    <!-- 导入http.js文件 -->
+    <script src="./js/http.js"></script>
 
+    <!-- 文章info模板 -->
+    <script id="article_info" type="text/html">
+        {{data.author}} 发布于 {{data.date}}&nbsp;&nbsp;&nbsp;分类:
+        {{data.category}}&nbsp;&nbsp;&nbsp;阅读:({{data.read}})&nbsp;&nbsp;&nbsp;评论:
+        ({{data.comments}})
+    </script>
+
+    <!-- 评论模板 -->
+    <script id="comment_temp" type="text/html">
+        {{each data v}}
+        <div class="comment_detail_list">
+            <div class="person_pic fl">{{v.author.substring(0,1)}}</div>
+            <div class="name_time fl"><b>{{v.author}}</b><span>{{v.time}}</span></div>
+            <div class="comment_text fl">
+                {{v.content}}
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    <script>
+        $(function () {
+            // 一：进来获取id，用id发送Ajax请求
+            let articleId = window.location.search.split('=')[1]
+            // 1.1 判断是否直接输入网址进入 如果是直接打回index页面
+            if (articleId == undefined) {
+                window.location.href = './index.html'
+            } else {
+                // 1.2 发送Ajax请求
+                $.ajax({
+                    type: "get",
+                    url: BigNew.index_article,
+                    data: {
+                        id: articleId
+                    },
+                    dataType: "json",
+                    success: function (backData) {
+                        // console.log(backData);
+                        if (backData.code == 200) {
+                            $('.breadcrumb').children('a').eq(1).text(backData.data.category);
+                            $('.article_title').text(backData.data.title);
+                            $('.article_con').html(backData.data.comment);
+                            let res = template('article_info', backData)
+                            $('.article_info').html(res);
+                            if (backData.data.prev == null) {
+                                $('.article_links').children('a').eq(0).text('没有上一页');
+                            } else {
+                                $('.article_links').children('a').eq(0).text(backData.data.prev
+                                    .title);
+                                $('.article_links').children('a').eq(0).attr('href',
+                                    './article.html?id=' +
+                                    backData.data.prev.id);
+                            }
+                            if (backData.data.next == null) {
+                                $('.article_links').children('a').eq(1).text('没有下一页');
+                            } else {
+                                $('.article_links').children('a').eq(1).text(backData.data.next
+                                    .title);
+                                $('.article_links').children('a').eq(1).attr('href',
+                                    './article.html?id=' +
+                                    backData.data.next.id);
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 二: 评论
+            // 1.1发送Ajax请求
+            $.ajax({
+                type: "get",
+                url: BigNew.index_get_comment,
+                data: {
+                    articleId: articleId
+                },
+                dataType: "json",
+                success: function (backData) {
+                    // console.log(backData);
+                    if (backData.code == 200) {
+                        // 1.2渲染页面
+                        $('.comment_count').text(backData.data.length + '条评论');
+                        let res = template('comment_temp', backData)
+                        $('.comment_list_con').html(res);
+                    }
+                }
+            });
+
+            // 三: 点击发表评论
+            // 1.1 设置点击按钮
+            $('.comment_sub').on('click', function (e) {
+                // 1.2 阻止submit跳转
+                e.preventDefault()
+                // 1.3 获取输入内容
+                let comment_name = $('.comment_name').val().trim();
+                let comment_input = $('.comment_input').val().trim();
+                // 1.4 非空判断
+                if (comment_name == '' || comment_input == '') {
+                    alert('输入不能为空');
+                    return;
+                }
+                // 1.5 发送Ajax请求
+                $.ajax({
+                    type: "post",
+                    url: BigNew.index_post_comment,
+                    data: {
+                        author: comment_name,
+                        content: comment_input,
+                        articleId: articleId
+                    },
+                    dataType: "json",
+                    success: function (backData) {
+                        console.log(backData);
+                        if (backData.code == 201) {
+                            alert('发表成功,等待审核');
+                        }
+                        // 1.6 清空输入框
+                        $('.comment_name').val('')
+                        $('.comment_input').val('')
+                    }
+                });
+            });
+
+
+        })
+    </script>
 </body>
 
 </html>

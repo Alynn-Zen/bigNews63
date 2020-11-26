@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-19 15:41:51
- * @LastEditTime: 2020-11-24 21:21:25
+ * @LastEditTime: 2020-11-26 17:00:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \前端\10_大事件\练习\bigNews63\admin\article_list.html
@@ -141,7 +141,7 @@
             type: $("#selCategory").val(),
             state: $("#selStatus").val(),
             page: myPage,
-            perpage: 14,
+            perpage: 16,
           },
           dataType: "json",
           success: function (backData) {
@@ -149,6 +149,8 @@
             if (backData.code == 200) {
               let str = template("articleList_temp", backData);
               $("tbody").html(str);
+
+
               // 回调函数      判断响应回来有没有数据
               if (callBack != null && backData.data.data.length != 0) {
                 $("#pagination-demo").show().next("p").hide();
