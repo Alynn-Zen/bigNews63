@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-20 22:53:14
- * @LastEditTime: 2020-11-25 10:52:47
+ * @LastEditTime: 2020-11-27 11:19:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \前端\10_大事件\练习\bigNews63\admin\js\http.js
@@ -29,6 +29,7 @@
     comment_pass: baseURL + "/admin/comment/pass", //文章评论通过
     comment_reject: baseURL + "/admin/comment/reject", //文章评论不通过
     comment_delete: baseURL + "/admin/comment/delete", //文章评论删除
+    admin_data_article: baseURL + "/admin/data/article", //文章评论删除
     // 前台接口
     index_search: baseURL + "/index/search", //文章搜索
     index_category: baseURL + "/index/category", //文章类型
